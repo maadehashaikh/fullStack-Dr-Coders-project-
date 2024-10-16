@@ -35,7 +35,7 @@ const Add = () => {
           <Form.Control
             className="p-3 border-2 border-black"
             type="text"
-            placeholder="Enter Your Email Here 🙂"
+            placeholder="Enter Your Email Here 💌"
             name="title"
             value={title}
             onChange={onChange}
