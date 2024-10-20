@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8082;
 const { connectDb } = require("./config/connectDb");
-const blogRoute = require("./routes/blog.route");
+const blogRoute = require(".s/routes/blog.route");
 
 connectDb();
 app.use(express.json());

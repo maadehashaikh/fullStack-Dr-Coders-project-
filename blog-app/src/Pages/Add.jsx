@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import axios from axios;
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Add = () => {
   const [formData, setFormData] = useState({
@@ -14,14 +14,14 @@ const Add = () => {
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const onSubmit = async(e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const response = axios.post("http://localhost:8082/api/blog",formData);
-    if(response.data.success){
+    const response = axios.post("http://localhost:8082/api/blog", formData);
+    if (response.data.success) {
       setFormData({
         title: "",
-        description: ""
-      })
+        description: "",
+      });
       // Toast
     }
   };
