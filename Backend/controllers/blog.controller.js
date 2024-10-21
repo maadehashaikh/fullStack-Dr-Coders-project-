@@ -1,7 +1,7 @@
 const Blog = require("../model/blog.model");
 
 exports.store = async (req, res, next) => {
-  try { 
+  try {
     const blog = await Blog.create(req.body);
     return res.json({
       status: 200,
@@ -14,8 +14,15 @@ exports.store = async (req, res, next) => {
   }
 };
 
-exports.index = (req, res, next) => {
+exports.index = async (req, res, next) => {
   try {
+    const blogs = await Blog.find(); // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blog Fetcched Successfully",
+      blogs,
+    });
   } catch (err) {
     console.log(err);
   }

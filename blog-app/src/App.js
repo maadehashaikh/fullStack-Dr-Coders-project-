@@ -3,6 +3,9 @@ import Navbarr from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Add from "./Pages/Add";
 import List from "./Pages/List";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <>
@@ -11,6 +14,7 @@ function App() {
         <Route path="/add" element={<Add />} />
         <Route path="/list" element={<List />} />
       </Routes>
+      <ToastContainer />
     </>
   );
 }
