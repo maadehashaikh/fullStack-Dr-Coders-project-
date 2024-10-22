@@ -5,6 +5,7 @@ import Add from "./Pages/Add";
 import List from "./Pages/List";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Update from "./Pages/Update";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/add" element={<Add />} />
         <Route path="/list" element={<List />} />
+        <Route path="/blog/:id" element={<Update />} />
       </Routes>
       <ToastContainer />
     </>

@@ -61,7 +61,7 @@ exports.destroy = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
   try {
-    const { id } = request.params;
+    const { id } = req.params;
     const blog = await Blog.findOneAndUpdate({ _id: id }); // only find change hua h is mai bus
     return res.json({
       status: 200,

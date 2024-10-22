@@ -94,7 +94,7 @@ const List = () => {
       cell: (row) => (
         <>
           <Link
-            to={`blog/${row._id}`}
+            to={`/blog/${row._id}`}
             className="border-2 border-black p-2 rounded bg-blue-500 text-white"
           >
             Update
