@@ -1,4 +1,6 @@
+const { request } = require("http");
 const Blog = require("../model/blog.model");
+const { assert } = require("console");
 
 exports.store = async (req, res, next) => {
   try {
@@ -20,7 +22,7 @@ exports.index = async (req, res, next) => {
     return res.json({
       status: 200,
       success: true,
-      message: "Blog Fetcched Successfully",
+      message: "Blogs Fetched Successfully",
       blogs,
     });
   } catch (err) {
@@ -28,22 +30,45 @@ exports.index = async (req, res, next) => {
   }
 };
 
-exports.get = (req, res, next) => {
+exports.get = async (req, res, next) => {
   try {
+    const { id } = request.params;
+    const blog = await Blog.findOne({ _id: id }); // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blog Fetched Successfully",
+      blog,
+    });
   } catch (err) {
     console.log(err);
   }
 };
 
-exports.destroy = (req, res, next) => {
+exports.destroy = async (req, res, next) => {
   try {
+    const { id } = req.params;
+    const blog = await Blog.findOneAndDelete({ _id: id }); // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blog Deleted Successfully",
+    });
   } catch (err) {
     console.log(err);
   }
 };
 
-exports.update = (req, res, next) => {
+exports.update = async (req, res, next) => {
   try {
+    const { id } = request.params;
+    const blog = await Blog.findOneAndUpdate({ _id: id }); // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blog Updated Successfully",
+      blog,
+    });
   } catch (err) {
     console.log(err);
   }
