@@ -21,11 +21,6 @@ const List = () => {
     fetchData();
   }, []);
 
-  const handleUpdate = (id) => {
-    // Add your update functionality here
-    // toast.info(`Update blog with id: ${id}`);
-  };
-
   const handleDelete = async (id) => {
     console.log("Delete button clicked, ID:", id); // Debugging log
     try {

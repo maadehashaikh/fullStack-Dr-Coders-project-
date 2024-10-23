@@ -62,7 +62,9 @@ exports.destroy = async (req, res, next) => {
 exports.update = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const blog = await Blog.findOneAndUpdate({ _id: id }); // only find change hua h is mai bus
+    const blog = await Blog.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    }); // only find change hua h is mai bus
     return res.json({
       status: 200,
       success: true,
@@ -73,3 +75,20 @@ exports.update = async (req, res, next) => {
     console.log(err);
   }
 };
+
+// exports.update = async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const blog = await Blog.findOneAndUpdate({ _id: id }, req.body, {
+//       new: true,
+//     });
+//     return res.json({
+//       status: 200,
+//       success: true,
+//       message: "Blog Updated Successfully",
+//       blog,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
