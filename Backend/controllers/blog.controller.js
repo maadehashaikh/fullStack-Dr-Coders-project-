@@ -32,7 +32,7 @@ exports.index = async (req, res, next) => {
 
 exports.get = async (req, res, next) => {
   try {
-    const { id } = request.params;
+    const { id } = req.params;
     const blog = await Blog.findOne({ _id: id }); // only find change hua h is mai bus
     return res.json({
       status: 200,
