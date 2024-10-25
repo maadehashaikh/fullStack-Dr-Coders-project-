@@ -2,6 +2,8 @@ const { log } = require("console");
 const User = require("../model/user.model");
 const bcrypt = require("bcryptjs");
 const salt = 10;
+const jwt = require("jsonwebtoken");
+
 exports.store = async (req, res, next) => {
   try {
     const { password } = req.body;
@@ -32,10 +34,16 @@ exports.login = async (req, res, next) => {
     }
     const userFinded = await bcrypt.compare(password, user.password);
     if (userFinded) {
+      const token = jwt.sign(
+        { id: user._id, exp: Math.floor(Date.now() / 1000) + 60 * 60 },
+        "tokenSecret"
+      );
+      //env mai rakhain gay bad mai
       return res.json({
         status: 200,
         success: true,
         message: "You are logged in succesfully",
+        token,
       });
     } else {
       return res.json({

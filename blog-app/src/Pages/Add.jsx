@@ -4,11 +4,16 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const Add = () => {
+  const token = localStorage.getItem("token");
+  const decodeToken = jwtDecode(token);
+  console.log(decodeToken);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    userId: decodeToken.id,
   });
 
   const { title, description } = formData;
