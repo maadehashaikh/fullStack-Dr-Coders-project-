@@ -1,8 +1,6 @@
-const { request } = require("http");
 const Blog = require("../model/blog.model");
-const { assert } = require("console");
 
-exports.store = async (req, res, next) => {
+exports.store = async (req, res) => {
   try {
     const blog = await Blog.create(req.body);
     return res.json({
@@ -16,7 +14,7 @@ exports.store = async (req, res, next) => {
   }
 };
 
-exports.index = async (req, res, next) => {
+exports.index = async (req, res) => {
   try {
     const { userId } = req.query;
     const query = {};
@@ -24,6 +22,7 @@ exports.index = async (req, res, next) => {
       query.userId = userId;
     }
     const blogs = await Blog.find(query); // only find change hua h is mai bus
+    console.log("🚀 ~ exports.index= ~ blogs:", blogs);
     return res.json({
       status: 200,
       success: true,

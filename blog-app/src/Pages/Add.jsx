@@ -5,6 +5,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 const Add = () => {
   const token = localStorage.getItem("token");
