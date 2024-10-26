@@ -1,15 +1,20 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const List = () => {
+  const token = localStorage.getItem("token");
+  const decodedToken = jwtDecode(token);
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8082/api/blog");
+      const response = await axios.get(
+        `http://localhost:8082/api/blog?userId=${decodedToken.id}`
+      );
       setData(response.data.blogs);
     } catch (error) {
       console.log("Error fetching data", error);

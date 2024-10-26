@@ -18,7 +18,12 @@ exports.store = async (req, res, next) => {
 
 exports.index = async (req, res, next) => {
   try {
-    const blogs = await Blog.find(); // only find change hua h is mai bus
+    const { userId } = req.query;
+    const query = {};
+    if (userId) {
+      query.userId = userId;
+    }
+    const blogs = await Blog.find(query); // only find change hua h is mai bus
     return res.json({
       status: 200,
       success: true,
