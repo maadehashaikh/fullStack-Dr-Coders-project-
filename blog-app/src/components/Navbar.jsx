@@ -13,6 +13,11 @@ const Navbarr = () => {
     navigate("/login");
     toast.success("Logout successfully");
   };
+
+  const goToSignup = () => {
+    navigate("/signup"); // Navigate to the signup page
+  };
+
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -24,8 +29,11 @@ const Navbarr = () => {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/add">Add Blog</Nav.Link>
               <Nav.Link href="/list">List Blog</Nav.Link>
-              <Button className="btn btn-danger" onClick={logout}>
+              <Button className="btn btn-danger mr-2" onClick={logout}>
                 Logout
+              </Button>
+              <Button className="btn btn-primary" onClick={goToSignup}>
+                Sign Up
               </Button>
             </Nav>
           </Navbar.Collapse>

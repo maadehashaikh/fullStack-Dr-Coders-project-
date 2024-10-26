@@ -7,6 +7,7 @@ import Login from "./Pages/Login";
 import Update from "./Pages/Update";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Signup from "./Pages/Signup";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -33,6 +34,7 @@ function App() {
           element={token ? <Update /> : <Navigate to="/login" />}
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <ToastContainer />
     </>

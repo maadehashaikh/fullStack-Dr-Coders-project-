@@ -20,6 +20,7 @@ const Login = () => {
       "http://localhost:8082/api/user/login",
       formData
     );
+    console.log(response);
     if (response.data.success) {
       localStorage.setItem("token", response.data.token);
       toast.success(response.data.message);
@@ -28,11 +29,14 @@ const Login = () => {
     // console.log(response.data);
   };
   return (
-    <div className="d-flex justify-content-center flex-column align-items-center">
-      <h1>Login To Blog App ✍</h1>
-      <Form onSubmit={onSubmit} className="mt-5">
+    <div className="d-flex justify-content-center flex-column align-items-center ">
+      <h1 className="mt-3">Login To Blog App ✍</h1>
+      <Form
+        onSubmit={onSubmit}
+        className="mt-5 bg-slate-400 w-auto p-3 rounded"
+      >
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label className="font-bold text-xl">Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter your email"
@@ -46,7 +50,7 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="font-bold text-xl">Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -55,7 +59,7 @@ const Login = () => {
             onChange={onChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="ml-24">
           Submit
         </Button>
       </Form>
