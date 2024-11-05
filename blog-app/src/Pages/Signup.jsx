@@ -31,7 +31,6 @@ const Signup = () => {
       alert("Signup failed, please try again."); // Provide user feedback
     }
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <input

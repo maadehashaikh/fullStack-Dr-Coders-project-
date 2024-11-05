@@ -3,45 +3,11 @@ const bcrypt = require("bcryptjs");
 const salt = 10;
 const jwt = require("jsonwebtoken");
 
-// exports.signup = async (req, res) => {
-//   try {
-//     const { password } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, salt);
-//     req.body.password = hashedPassword;
-//     const user = await User.create(req.body);
-//     return res.json({
-//       status: 200,
-//       success: true,
-//       message: "User created successfully",
-//       user,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(500).json({
-//       status: 500,
-//       success: false,
-//       message: "Server error", // Respond with an error message
-//     });
-//   }
-// };
-
 exports.signup = async (req, res) => {
   try {
-    console.log("Received signup request:", req.body); // Log incoming request body
-    const { password, username, email } = req.body; // Destructure other fields too if needed
-
-    // Check if all required fields are present
-    if (!password || !username || !email) {
-      return res.status(400).json({
-        status: 400,
-        success: false,
-        message: "All fields are required", // Ensure all fields are present
-      });
-    }
-
+    const { password } = req.body;
     const hashedPassword = await bcrypt.hash(password, salt);
     req.body.password = hashedPassword;
-
     const user = await User.create(req.body);
     return res.json({
       status: 200,
@@ -50,11 +16,11 @@ exports.signup = async (req, res) => {
       user,
     });
   } catch (err) {
-    console.error("Error during signup:", err); // More specific error logging
+    console.log(err);
     return res.status(500).json({
       status: 500,
       success: false,
-      message: "Server error",
+      message: "Server error", // Respond with an error message
     });
   }
 };
@@ -95,63 +61,63 @@ exports.login = async (req, res, next) => {
   }
 };
 
-// exports.index = async (req, res, next) => {
-//   try {
-//     const user = await User.find(); // only find change hua h is mai bus
-//     return res.json({
-//       status: 200,
-//       success: true,
-//       message: "Blogs Fetched Successfully",
-//       user,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+exports.index = async (req, res, next) => {
+  try {
+    const user = await User.find(); // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blogs Fetched Successfully",
+      user,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// exports.get = async (req, res, next) => {
-//   try {
-//     const { id } = request.params;
-//     const user = await User.findOne({ _id: id }); // only find change hua h is mai bus
-//     return res.json({
-//       status: 200,
-//       success: true,
-//       message: "Blog Fetched Successfully",
-//       user,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+exports.get = async (req, res, next) => {
+  try {
+    const { id } = request.params;
+    const user = await User.findOne({ _id: id }); // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blog Fetched Successfully",
+      user,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// exports.destroy = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     const user = await User.findOneAndDelete({ _id: id });
-//     // only find change hua h is mai bus
-//     return res.json({
-//       status: 200,
-//       success: true,
-//       message: "Blog Deleted Successfully",
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+exports.destroy = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findOneAndDelete({ _id: id });
+    // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blog Deleted Successfully",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// exports.update = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     const user = await User.findOneAndUpdate({ _id: id }, req.body, {
-//       new: true,
-//     }); // only find change hua h is mai bus
-//     return res.json({
-//       status: 200,
-//       success: true,
-//       message: "Blog Updated Successfully",
-//       user,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+exports.update = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    }); // only find change hua h is mai bus
+    return res.json({
+      status: 200,
+      success: true,
+      message: "Blog Updated Successfully",
+      user,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
