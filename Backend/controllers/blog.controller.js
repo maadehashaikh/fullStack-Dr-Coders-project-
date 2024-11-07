@@ -79,20 +79,3 @@ exports.update = async (req, res, next) => {
     console.log(err);
   }
 };
-
-// exports.update = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     const blog = await Blog.findOneAndUpdate({ _id: id }, req.body, {
-//       new: true,
-//     });
-//     return res.json({
-//       status: 200,
-//       success: true,
-//       message: "Blog Updated Successfully",
-//       blog,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };

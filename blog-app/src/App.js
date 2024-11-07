@@ -8,6 +8,7 @@ import Update from "./Pages/Update";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Signup from "./Pages/Signup";
+import Home from "./Pages/Home";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -21,6 +22,11 @@ function App() {
     <>
       {token && <Navbarr />}
       <Routes>
+        <Route
+          path="/home"
+          element={token ? <Home /> : <Navigate to="/home" />}
+        />
+
         <Route
           path="/add"
           element={token ? <Add /> : <Navigate to="/login" />}

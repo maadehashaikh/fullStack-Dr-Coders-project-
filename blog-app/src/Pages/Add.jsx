@@ -38,7 +38,7 @@ const Add = () => {
     }
   };
   return (
-    <div className="bg-slate-500 h-screen">
+    <div className="bg-slate-400 h-screen">
       <Form onSubmit={onSubmit}>
         <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
           <Form.Label className="font-bold text-2xl p-2">
@@ -66,7 +66,9 @@ const Add = () => {
             onChange={onChange}
           />
         </Form.Group>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="ml-[45%]">
+          Submit
+        </Button>
       </Form>
     </div>
   );

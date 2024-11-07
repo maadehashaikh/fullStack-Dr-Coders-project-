@@ -20,23 +20,26 @@ const Navbarr = () => {
 
   return (
     <div>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          <Navbar.Brand href="#home">Blog App ✍</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/add">Add Blog</Nav.Link>
-              <Nav.Link href="/list">List Blog</Nav.Link>
-              <Button className="btn btn-danger mr-2" onClick={logout}>
-                Logout
-              </Button>
-              <Button className="btn btn-primary" onClick={goToSignup}>
-                Sign Up
-              </Button>
-            </Nav>
-          </Navbar.Collapse>
+      <Navbar className="bg-slate-400">
+        <Container className="w-full text-center">
+          <Navbar className="text-2xl font-bold ">My Blog App</Navbar>
+          <Nav className=" ml-80 gap-8 ">
+            <Nav.Link href="/home" className="text-black font-bold mt-2">
+              Home
+            </Nav.Link>
+            <Nav.Link href="/add" className="text-black font-bold mt-2">
+              Add Blog
+            </Nav.Link>
+            <Nav.Link href="/list" className="text-black font-bold mt-2">
+              List Blog
+            </Nav.Link>
+            <Button className="btn btn-danger ml-32 " onClick={logout}>
+              Logout
+            </Button>
+            <Button className="btn btn-primary ml-2" onClick={goToSignup}>
+              Sign Up
+            </Button>
+          </Nav>
         </Container>
       </Navbar>
     </div>
